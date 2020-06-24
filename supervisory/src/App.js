@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useRef } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import * as firebase from 'firebase'
@@ -6,11 +6,14 @@ import logoITT from './imgs/logoITT.png'
 
 class App extends Component {
 
-  constructor(){
+  auth = undefined
+  config = undefined
+
+  constructor(){  
     super()
     this.authenticate = this.authenticate.bind(this)
 
-    const config = {
+    this.config = {
       apiKey: "AIzaSyCcfjoCu8YRXIwdtJdiSk31lPeUtokXVAo",
       authDomain: "app-itt-supevisory-system.firebaseapp.com",
       databaseURL: "https://app-itt-supevisory-system.firebaseio.com",
@@ -22,26 +25,34 @@ class App extends Component {
     }
 
     this.state = {
-      user: undefined
+      user: null,
+      emailLogin: null,
+      passwordLogin: null,
+      displayName: null,
+      email: null,
+      emailVerified: null,
+      photoURL: null,
+      isAnonymous: null,
+      uid: null,
+      providerData: null
     }
   }
 
   componentDidMount() {
     firebase.initializeApp(this.config)
-    const auth = firebase.auth()
+    this.auth = firebase.auth()
 
     this.auth.onAuthStateChanged((user) => {
       if(user) {
         this.setState({
-          user: user
+          displayName: user.displayName,
+          email: user.email,
+          emailVerified: user.emailVerified,
+          photoURL: user.photoURL,
+          isAnonymous: user.isAnonymous,
+          uid: user.uid,
+          providerData: user.providerData
         })
-        // let displayName = user.displayName,
-        //   email = user.email,
-        //   emailVerified = user.emailVerified,
-        //   photoURL = user.photoURL,
-        //   isAnonymous = user.isAnonymous,
-        //   uid = user.uid,
-        //   providerData = user.providerData
         localStorage.setItem('firebase_auth', this.state.user)
       } else {
         this.setState({
@@ -52,50 +63,58 @@ class App extends Component {
     })
   }
 
-  authenticate(e){
+  authenticate = (e) => {
     e.preventDefault()
 
-    this.auth.signInWithEmailAndPassword(this.refs.email.value, this.refs.password.value).then(userSignIn => {
-      // this.setState({
-      //   user: userSignIn
-      // })
-      console.log('user', userSignIn)
-    }).catch(function(error) {
+    const { emailLogin, passwordLogin } = this.state
+
+    this.auth.signInWithEmailAndPassword(emailLogin, passwordLogin).then(userSignIn => {
+      this.setState({
+        user: userSignIn
+      })
+      console.log('state', this.state)
+    }).catch((error) => {
       let errorCode = error.Code,
         errorMessage = error.Message
       console.log(errorCode, '-', errorMessage)
     })
   }
 
+  handleChangeEmail = (event) => {
+    this.setState({
+      emailLogin: event.target.value
+    })
+  }
+
+  handleChangePassword = (event) => {
+    this.setState({
+      passwordLogin: event.target.value
+    })
+  }
+
   render() {
     return (
-      <div className='container'>
+      <div className='content'>
         <div className='row'>
           <div className='col-4'>
           </div>
           <div className='col-4'>
             <div className='container-fluid card-login'>
-              <div className='card card-shadow'>
-                <img className='card-img-top img-login align-self-center' src={logoITT} alt='ITT CHIP' />
-                <div className='card-body'>
+              <div className='card'>
+                <img align='center' className='logoImg' src={logoITT} alt='ITT CHIP' />
+                <div className='cardBody'>
                   <form onSubmit={this.authenticate}>
                     <div className='form-group'>
                       <label htmlFor='exampleInputEmail'>Email</label>
                       <input id='email' ref='email' className='form-control' id='exampleInputEmail'
-                        aria-aria-describedby='emailHelp' placeholder='email' />
-                      <small id='emailHelp' className='form-text text-muted'>
-                        Esse email é para a autenticação do firebase
-                      </small>
+                        aria-aria-describedby='emailHelp' placeholder='email' onChange={this.handleChangeEmail} />
                     </div>
                     <div className='form-group'>
                       <label htmlFor='exampleInputPassword'>Senha</label>
                       <input type='password' ref='password' className='form-control' id='exampleInpitPassword'
-                        placeholder='senha' />
+                        placeholder='senha' onChange={this.handleChangePassword} />
                     </div>
-                    <button type='submit' className='btn btn-primary btn-block'>Entrar</button>
-                    <small id='cardHelp' className='form-text text-muted text-center'>
-                      React + Firebase
-                    </small>
+                    <button type='submit' className='enter'>Entrar</button>
                   </form>
                 </div>
               </div>
