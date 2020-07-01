@@ -73,12 +73,13 @@ class Auth extends React.Component {
       this.setState({
         user: userSignIn
       })
-      isAuthenticated(true)
+      window.location.href ='/app'
+      this.refs.email.value = ''
+      this.refs.password.value = ''
     }).catch((error) => {
       let errorCode = error.Code,
         errorMessage = error.Message
       console.log(errorCode, '-', errorMessage)
-      isAuthenticated(false)
     })
   }
 

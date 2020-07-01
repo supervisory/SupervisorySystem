@@ -10,7 +10,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
             isAuthenticated() ? (
                 <Component {...props} />
             ) : (
-                <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+                <Redirect to={{pathname: '/login', state: { from: props.location }}} />
             )
         }
     />
@@ -20,7 +20,7 @@ const Routes = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path='/login' component={() => <Auth />} />
-            <PrivateRoute path='/app' component={() => <h1>Hello de novo</h1>} />
+            <PrivateRoute path='/app' component={() => <h1>Wellcome</h1>} />
         </Switch>
     </BrowserRouter>
 )
