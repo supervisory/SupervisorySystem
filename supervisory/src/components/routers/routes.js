@@ -1,7 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-import Auth from './Auth'
-import { isAuthenticated } from './Auth'
+import Auth, { isAuthenticated } from '../auth/Auth'
+import LoadBlock from '../loadBlocks/LoadBlock'
+import FirstChart from '../charts/FirstChart/FirstChart'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -19,8 +20,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Routes = () => (
     <BrowserRouter>
         <Switch>
-            <Route exact path='/login' component={() => <Auth />} />
-            <PrivateRoute path='/app' component={() => <h1>Wellcome</h1>} />
+            <Route exact path='/' component={() => <Auth />} />
+            <PrivateRoute path='/app' component={() => <LoadBlock />} />
+            <PrivateRoute path='/firstChart' component={() => <FirstChart />} />
         </Switch>
     </BrowserRouter>
 )

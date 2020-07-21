@@ -1,8 +1,8 @@
 import React from 'react'
-import './App.css'
+// import './App.css'
 import * as firebase from 'firebase'
-import logoITT from './imgs/logoITT.png'
-import Routes from './routes'
+import logoITT from '../../imgs/logoITT.png'
+import Routes from '../routers/routes'
 
 const App = () => <Routes />
 

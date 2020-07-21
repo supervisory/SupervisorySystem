@@ -1,7 +1,7 @@
 import React from 'react'
-import './App.css'
+import './auth.css'
 import * as firebase from 'firebase'
-import logoITT from './imgs/logoITT.png'
+import logoITT from '../../imgs/logoITT.png'
 
 export const isAuthenticated = () => true
 
@@ -117,7 +117,7 @@ class Auth extends React.Component {
                       <input type='password' ref='password' className='form-control' id='exampleInpitPassword'
                         placeholder='senha' onChange={this.handleChangePassword} />
                     </div>
-                    <button type='submit' className='enter'>Entrar</button>
+                    <button type='submit' className='button'>Entrar</button>
                   </form>
                 </div>
               </div>

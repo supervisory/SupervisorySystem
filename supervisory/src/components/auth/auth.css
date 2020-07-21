@@ -71,7 +71,7 @@ a.links{
   align-items: center;
 }
 
-button{
+.button{
   width: 400px;
   min-height: 40px;
   margin: 10px auto;
