@@ -1,29 +1,63 @@
 import React from 'react'
-import { Radar } from 'react-chartjs-2'
+import { Bar } from 'react-chartjs-2'
+import _ from 'lodash'
 
 class BarChart extends React.Component {
+    // state = {
+    //     label: null,
+    //     data: null
+    // }
+
+    componentDidMount = () => {
+        // this.selector()
+    }
+
+    // selector = () => {
+    //     const { data } = this.props
+
+    //     if (!!data) {
+    //         data.reduce((acc, crr) => {
+    //             console.log('crr', crr)
+    //         })
+    //     }
+    // }
 
     render() {
+        const { data } = this.props
+        
         return (
-            <Radar
+            <Bar
                 data={{
-                    labels : ['January','February','March','April','May','June','July'],
+                    labels : data && data.length > 0 ? data.map((item) => item.Data) : [],
                     datasets : [
                         {
-                        // backgroundColor: 'rgba(151,187,205,1)',
-                        data : [65,59,90,81,56,55,40],
-                        label : 'Tigers'
-                    },
-                    {
-                        // backgroundColor: 'rgba(110,80,100,1)',
-                        data : [28,48,40,19,96,27,100],
-                        label : 'Bears'
-                    }
-                    ]
+                            data : data && data.length > 0  ? data.map((item) => item.TapA) : [],
+                            label : 'Tap A',
+                            backgroundColor: 'gray'
+                        },
+                        {
+                            data : data && data.length > 0  ? data.map((item) => item.TapB) : [],
+                            label : 'Tap B',
+                            backgroundColor: 'blue',
+                        },
+                        {
+                            data : data && data.length > 0  ? data.map((item) => item.TapC) : [],
+                            label : 'Tap C',
+                            backgroundColor: 'red'
+                        }
+                    ],
                 }}
                 width={400}
                 height={400}
-                options={{ maintainAspectRatio: false }}
+                options={{
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }}
             />
         )
     }

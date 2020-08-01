@@ -1,6 +1,5 @@
 import React from 'react'
 import './loadBlock.css'
-import FirstChart from '../charts/FirstChart/FirstChart'
 
 class LoadBlock extends React.Component {
 
