@@ -1,5 +1,5 @@
 import React from 'react'
-import BarChart from './BarChart'
+import LineChart from './LineChart'
 import Card from '@material-ui/core/Card'
 import NoData from '../../assents/noData/NoData'
 
@@ -32,7 +32,7 @@ class FirstChart extends React.Component {
             >
 
                 {this.state.response ? 
-                <BarChart data={this.state.response} />:
+                <LineChart data={this.state.response} />:
                 <NoData />}
             </Card>
         )

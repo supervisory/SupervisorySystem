@@ -2,7 +2,8 @@ import React from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Auth, { isAuthenticated } from '../auth/Auth'
 import LoadBlock from '../loadBlocks/LoadBlock'
-import FirstChart from '../charts/FirstChart/FirstChart'
+import FirstChart from '../charts/firstChart/FirstChart'
+import SecondChart from '../charts/secondChart/SecondChart'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -23,6 +24,7 @@ const Routes = () => (
             <Route exact path='/' component={() => <Auth />} />
             <PrivateRoute path='/app' component={() => <LoadBlock />} />
             <PrivateRoute path='/firstChart' component={() => <FirstChart />} />
+            <PrivateRoute path='/secondChart' component={() => <SecondChart />} />
         </Switch>
     </BrowserRouter>
 )

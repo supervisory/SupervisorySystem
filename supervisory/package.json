@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "chart.js": "^2.9.3",
     "cors": "^2.8.5",
+    "expo": "^38.0.9",
     "express": "^4.17.1",
     "lodash": "^4.17.19",
+    "material-ui": "^0.20.2",
     "mysql2": "^2.1.0",
     "python3": "0.0.1",
     "react": "^16.13.1",
@@ -41,5 +44,35 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "expo": {
+    "name": "Sistema Supervisorio",
+    "slug": "Sistema Supervisorio",
+    "privacy": "public",
+    "sdkVersion": "36.0.0",
+    "plataforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrain",
+    "icon": "./src/assents/icon.png",
+    "splash": {
+      "image": "./src/assents/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#8E37D7"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "ios": {
+      "supportTablet": true,
+      "bundleIdentifier": "com.ITTCHIP.sistemasupervisorio",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.ITTCHIP.sistemasupervisorio",
+      "versionCode": 1
+    }
+   }
 }

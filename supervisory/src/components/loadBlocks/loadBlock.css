@@ -9,12 +9,14 @@
     border-radius: 5px;
   } */
   .componentLoadBlock{
-    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
-    padding: 20px;
-    min-height: 100px;
     border: 1px solid #b2b2b2;
     border-radius: 5px;
     align-self: center;
+    /* background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7); */
+  }
+
+  .typography {
+    padding: '10px'
   }
 
   .content{

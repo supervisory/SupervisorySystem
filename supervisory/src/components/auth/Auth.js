@@ -1,5 +1,5 @@
 import React from 'react'
-import './auth.css'
+import './auth2.css'
 import * as firebase from 'firebase'
 import logoITT from '../../imgs/logoITT.png'
 
@@ -98,34 +98,21 @@ class Auth extends React.Component {
   render() {
     return (
       <div className='content'>
-        <div className='row'>
-          <div className='col-4'>
-          </div>
-          <div className='col-4'>
-            <div className='container-fluid card-login'>
-              <div className='card'>
-                <img align='center' className='logoImg' src={logoITT} alt='ITT CHIP' />
-                <div className='cardBody'>
-                  <form onSubmit={this.authenticate}>
-                    <div className='form-group'>
-                      <label htmlFor='exampleInputEmail'>Email</label>
-                      <input id='email' ref='email' className='form-control' id='exampleInputEmail'
-                        aria-aria-describedby='emailHelp' placeholder='email' onChange={this.handleChangeEmail} />
-                    </div>
-                    <div className='form-group'>
-                      <label htmlFor='exampleInputPassword'>Senha</label>
-                      <input type='password' ref='password' className='form-control' id='exampleInpitPassword'
-                        placeholder='senha' onChange={this.handleChangePassword} />
-                    </div>
-                    <button type='submit' className='button'>Entrar</button>
-                  </form>
-                </div>
-              </div>
+        <div>
+            <div>
+              <label htmlFor='exampleInputEmail'>E-mail:</label>
+              <input id='email' ref='email' id='exampleInputEmail'
+                aria-aria-describedby='emailHelp' placeholder='email' onChange={this.handleChangeEmail} />
+            </div>
+            <div>
+              <label htmlFor='exampleInputPassword'>Senha:</label>
+              <input type='password' ref='password' id='exampleInpitPassword'
+                placeholder='senha' onChange={this.handleChangePassword} />
+            </div>
+            <div>
+              <button type='submit' onClick={this.authenticate} className='button'>Entrar</button>
             </div>
           </div>
-          <div className='col-4'>
-          </div>
-        </div>
       </div>
     )
   }

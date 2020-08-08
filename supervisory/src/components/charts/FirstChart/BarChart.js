@@ -1,27 +1,7 @@
 import React from 'react'
 import { Bar } from 'react-chartjs-2'
-import _ from 'lodash'
 
 class BarChart extends React.Component {
-    // state = {
-    //     label: null,
-    //     data: null
-    // }
-
-    componentDidMount = () => {
-        // this.selector()
-    }
-
-    // selector = () => {
-    //     const { data } = this.props
-
-    //     if (!!data) {
-    //         data.reduce((acc, crr) => {
-    //             console.log('crr', crr)
-    //         })
-    //     }
-    // }
-
     render() {
         const { data } = this.props
         
@@ -33,17 +13,17 @@ class BarChart extends React.Component {
                         {
                             data : data && data.length > 0  ? data.map((item) => item.TapA) : [],
                             label : 'Tap A',
-                            backgroundColor: 'gray'
+                            backgroundColor: '#1CD1BB'
                         },
                         {
                             data : data && data.length > 0  ? data.map((item) => item.TapB) : [],
                             label : 'Tap B',
-                            backgroundColor: 'blue',
+                            backgroundColor: '#AD1CD1',
                         },
                         {
                             data : data && data.length > 0  ? data.map((item) => item.TapC) : [],
                             label : 'Tap C',
-                            backgroundColor: 'red'
+                            backgroundColor: '#2BF905'
                         }
                     ],
                 }}
