@@ -1,5 +1,5 @@
 import React from 'react'
-import './auth2.css'
+import './auth.css'
 import * as firebase from 'firebase'
 import logoITT from '../../imgs/logoITT.png'
 
@@ -98,7 +98,7 @@ class Auth extends React.Component {
   render() {
     return (
       <div className='content'>
-        <div>
+        <div className='authContent'>
             <div>
               <label htmlFor='exampleInputEmail'>E-mail:</label>
               <input id='email' ref='email' id='exampleInputEmail'
