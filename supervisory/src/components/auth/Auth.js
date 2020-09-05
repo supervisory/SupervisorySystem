@@ -1,6 +1,6 @@
 import React from 'react'
 import './auth.css'
-import * as firebase from 'firebase'
+import firebase from 'firebase'
 import logoITT from '../../imgs/logoITT.png'
 
 export const isAuthenticated = () => true
@@ -15,14 +15,14 @@ class Auth extends React.Component {
     this.authenticate = this.authenticate.bind(this)
 
     this.config = {
-      apiKey: "AIzaSyCcfjoCu8YRXIwdtJdiSk31lPeUtokXVAo",
-      authDomain: "app-itt-supevisory-system.firebaseapp.com",
-      databaseURL: "https://app-itt-supevisory-system.firebaseio.com",
-      projectId: "app-itt-supevisory-system",
-      storageBucket: "app-itt-supevisory-system.appspot.com",
-      messagingSenderId: "435543890935",
-      appId: "1:435543890935:web:b602c4ab00eb0e843f2cf2",
-      measurementId: "G-CS68P9D2RS"
+      apiKey: 'AIzaSyCcfjoCu8YRXIwdtJdiSk31lPeUtokXVAo',
+      authDomain: 'app-itt-supevisory-system.firebaseapp.com',
+      databaseURL: 'https://app-itt-supevisory-system.firebaseio.com',
+      projectId: 'app-itt-supevisory-system',
+      storageBucket: 'app-itt-supevisory-system.appspot.com',
+      messagingSenderId: '435543890935',
+      appId: '1:435543890935:web:b602c4ab00eb0e843f2cf2',
+      measurementId: 'G-CS68P9D2RS'
     }
 
     this.state = {
@@ -41,9 +41,9 @@ class Auth extends React.Component {
 
   componentDidMount() {
     firebase.initializeApp(this.config)
-    this.auth = firebase.auth()
+    // this.auth = firebase.auth()
 
-    this.auth.onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged((user) => {
       if(user) {
         this.setState({
           displayName: user.displayName,
@@ -69,7 +69,7 @@ class Auth extends React.Component {
 
     const { emailLogin, passwordLogin } = this.state
 
-    this.auth.signInWithEmailAndPassword(emailLogin, passwordLogin).then(userSignIn => {
+    firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin).then(userSignIn => {
       this.setState({
         user: userSignIn
       })
