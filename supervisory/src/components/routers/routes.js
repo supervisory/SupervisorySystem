@@ -22,6 +22,7 @@ const Routes = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path='/' component={() => <Auth />} />
+            {/* <Redirect from="*" to="/" /> */}
             <PrivateRoute path='/app' component={() => <LoadBlock />} />
             <PrivateRoute path='/firstChart' component={() => <FirstChart />} />
             <PrivateRoute path='/secondChart' component={() => <SecondChart />} />
